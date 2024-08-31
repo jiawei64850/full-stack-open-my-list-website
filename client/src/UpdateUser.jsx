@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,18 +11,19 @@ const UpdateUser = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getUser/' + id)
+    axios.get(`http://localhost:3001/getUser/${id}`)
       .then(result => {
         setName(result.data.name)
         setEmail(result.data.email)
         setAge(result.data.age)
       })
+
       .catch(e => console.log(e))
-  }, [])
+  }, [id])
 
   const Update = (e) => {
     e.preventDefault()
-    axios.put('http://localhost:3001/updateUser/' + id, { name, email, age })
+    axios.put(`http://localhost:3001/updateUser/${id}`, { name, email, age })
       .then(
         result => {
           console.log(result)

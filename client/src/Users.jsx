@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
@@ -45,7 +45,7 @@ const Users = () => {
                   <td>{user.age}</td>
                   <td>
                     <Link to={`/update/${user._id}`} className="btn btn-success">Update</Link>
-                      <button className="btn btn-danger" onClick={(e) => remove(user._id)}>delete</button>
+                      <button className="btn btn-danger" onClick={() => remove(user._id)}>delete</button>
                   </td>
                 </tr>
               )})
